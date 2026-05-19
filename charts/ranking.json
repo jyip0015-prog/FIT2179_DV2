@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "width": 430,
+  "height": 320,
+
+  "data": {
+    "url": "data/ridership_headline.csv"
+  },
+
+  "transform": [
+    {
+      "fold": [
+        "rail_lrt_ampang",
+        "rail_lrt_kj",
+        "rail_monorail",
+        "rail_mrt_kajang"
+      ],
+      "as": ["Service", "Ridership"]
+    },
+    {
+      "aggregate": [
+        {
+          "op": "mean",
+          "field": "Ridership",
+          "as": "Average Ridership"
+        }
+      ],
+      "groupby": ["Service"]
+    }
+  ],
+
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 6
+  },
+
+  "encoding": {
+    "y": {
+      "field": "Service",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null
+    },
+    "x": {
+      "field": "Average Ridership",
+      "type": "quantitative",
+      "title": "Average Daily Ridership"
+    },
+    "color": {
+      "field": "Service",
+      "type": "nominal",
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "Service", "type": "nominal"},
+      {"field": "Average Ridership", "type": "quantitative", "format": ","}
+    ]
+  },
+
+  "config": {
+    "axis": {
+      "labelColor": "#cbd5e1",
+      "titleColor": "#e2e8f0",
+      "gridColor": "#334155",
+      "domainColor": "#64748b",
+      "tickColor": "#64748b"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

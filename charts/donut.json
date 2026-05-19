@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "background": "transparent",
+
+  "width": 320,
+  "height": 320,
+
+  "data": {
+    "values": [
+      {"mode": "Rail", "value": 42},
+      {"mode": "Bus", "value": 58}
+    ]
+  },
+
+  "mark": {
+    "type": "arc",
+    "innerRadius": 90,
+    "outerRadius": 140,
+    "cornerRadius": 8
+  },
+
+  "encoding": {
+    "theta": {
+      "field": "value",
+      "type": "quantitative"
+    },
+
+    "color": {
+      "field": "mode",
+      "type": "nominal",
+      "scale": {
+        "range": ["#f97316", "#38bdf8"]
+      },
+      "legend": {
+        "title": "Transport Mode",
+        "labelColor": "white",
+        "titleColor": "white",
+        "orient": "bottom"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "mode",
+        "type": "nominal",
+        "title": "Mode"
+      },
+      {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Share (%)"
+      }
+    ]
+  },
+
+  "view": {
+    "stroke": null
+  },
+
+  "config": {
+    "style": {
+      "cell": {
+        "stroke": "transparent"
+      }
+    }
+  }
+}

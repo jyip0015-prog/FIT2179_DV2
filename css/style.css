@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f172a;
+    color: white;
+    line-height: 1.6;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: #cbd5e1;
+
+    max-width: 700px;
+}
+
+.section {
+    padding: 5rem 10%;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.chart-placeholder {
+    background: #24324a;
+
+    border-radius: 16px;
+
+    min-height: 400px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #94a3b8;
+    font-size: 1.2rem;
+
+    margin-bottom: 2rem;
+}
+
+.two-column {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 2rem;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 10%;
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.nav-title {
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.section-text {
+    color: #cbd5e1;
+    max-width: 850px;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.large-chart {
+    min-height: 520px;
+}
+
+#rail-map {
+    background-color: #0f172a;  
+    border-radius: 18px;
+    padding: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.chart-card {
+    background: #1e293b;
+    border-radius: 18px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.chart-card h3 {
+    font-size: 1.15rem;
+    color: #f8fafc;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.chart-card .chart-placeholder {
+    margin-bottom: 0;
+}

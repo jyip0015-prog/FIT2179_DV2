@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How Malaysia Moves</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Vega Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-title">How Malaysia Moves</div>
+        <div class="nav-links">
+            <a href="#map">Map</a>
+            <a href="#trends">Trends</a>
+            <a href="#patterns">Patterns</a>
+            <a href="#explore">Explore</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>How Malaysia Moves</h1>
+            <p class="subtitle">
+                Exploring Malaysia’s public transport trends through ridership patterns and railway networks.
+            </p>
+        </div>
+    </section>
+
+    <section class="section" id="map">
+        <h2>1. Malaysia Railway Network</h2>
+        <p class="section-text">
+            A geographic view of Malaysia’s railway network and how rail infrastructure is distributed across the country.
+        </p>
+
+        <div class="chart-card">
+            <h3>Malaysia Railway Network Map</h3>
+            <div id="rail-map" class="large-chart"></div>
+        </div>
+    </section>
+
+    <section class="section" id="trends">
+        <h2>2. Ridership Recovery and Growth</h2>
+        <p class="section-text">
+            This section shows how public transport ridership changed over time, especially before and after major disruptions.
+        </p>
+
+        <div class="chart-card">
+            <h3>Daily Ridership Trend by Rail Service</h3>
+            <div id="ridership-line" class="large-chart"></div>
+        </div>
+
+        <div class="two-column">
+            <div class="chart-card">
+                <h3>Bus and Rail Ridership Volume</h3>
+                <div id="stacked-area"></div>
+            </div>
+
+            <div class="chart-card">
+                <h3>Rail Service Trends</h3>
+                <div id="small-multiples-chart"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="patterns">
+        <h2>3. Daily and Monthly Travel Patterns</h2>
+        <p class="section-text">
+            Ridership is not the same every day. Heatmaps and monthly views can reveal weekday, weekend, and seasonal travel patterns.
+        </p>
+
+        <div class="chart-card">
+            <h3>MRT Kajang Ridership Heatmap</h3>
+            <div id="heatmap-chart" class="large-chart"></div>
+        </div>
+
+        <div class="two-column">
+            <div class="chart-card">
+                <h3>Bus and Rail Mode Share</h3>
+                <div id="donut-chart"></div>
+            </div>
+
+            <div class="chart-card">
+                <h3>Average Rail Service Ranking</h3>
+                <div id="ranking-chart"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="explore">
+        <h2>4. Interactive Exploration</h2>
+        <p class="section-text">
+            Users can explore different transport modes and compare how each service contributes to Malaysia’s mobility story.
+        </p>
+
+        <div class="chart-card">
+            <h3>Interactive Transport Mode Explorer</h3>
+            <div class="chart-placeholder large-chart">INTERACTIVE FILTERED CHART</div>
+        </div>
+
+        <div class="two-column">
+            <div class="chart-card">
+                <h3>Bus and Rail Relationship</h3>
+                <div class="chart-placeholder">SCATTER PLOT</div>
+            </div>
+
+            <div class="chart-card">
+                <h3>Monthly Ridership Comparison</h3>
+                <div class="chart-placeholder">MONTHLY COMPARISON CHART</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Conclusion</h2>
+        <p class="section-text">
+            Malaysia’s public transport data shows how mobility is shaped by rail infrastructure, urban demand, and changing travel behaviour.
+        </p>
+    </section>
+
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 430,
+  "height": 330,
+  "background": "transparent",
+
+  "data": {
+    "url": "data/ridership_headline.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "toNumber(replace(datum.bus_rkl || '0', ',', '')) + toNumber(replace(datum.bus_rkn || '0', ',', '')) + toNumber(replace(datum.bus_rpn || '0', ',', ''))",
+      "as": "Bus"
+    },
+    {
+      "calculate": "toNumber(replace(datum.rail_lrt_ampang || '0', ',', '')) + toNumber(replace(datum.rail_mrt_kajang || '0', ',', '')) + toNumber(replace(datum.rail_lrt_kj || '0', ',', '')) + toNumber(replace(datum.rail_monorail || '0', ',', '')) + toNumber(replace(datum.rail_ets || '0', ',', '')) + toNumber(replace(datum.rail_komuter || '0', ',', ''))",
+      "as": "Rail"
+    },
+    {
+      "fold": ["Bus", "Rail"],
+      "as": ["Mode", "Ridership"]
+    }
+  ],
+
+  "mark": {
+    "type": "area",
+    "opacity": 0.85
+  },
+
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Date"
+    },
+    "y": {
+      "field": "Ridership",
+      "type": "quantitative",
+      "stack": "zero",
+      "title": "Daily Ridership"
+    },
+    "color": {
+      "field": "Mode",
+      "type": "nominal",
+      "title": "Transport Mode",
+      "scale": {
+        "range": ["#38bdf8", "#f97316"]
+      }
+    },
+    "tooltip": [
+      {"field": "date", "type": "temporal", "title": "Date"},
+      {"field": "Mode", "type": "nominal", "title": "Mode"},
+      {"field": "Ridership", "type": "quantitative", "title": "Ridership", "format": ","}
+    ]
+  },
+
+  "config": {
+    "axis": {
+      "labelColor": "#cbd5e1",
+      "titleColor": "#e2e8f0",
+      "gridColor": "#334155",
+      "domainColor": "#64748b",
+      "tickColor": "#64748b"
+    },
+    "legend": {
+      "labelColor": "#cbd5e1",
+      "titleColor": "#e2e8f0"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

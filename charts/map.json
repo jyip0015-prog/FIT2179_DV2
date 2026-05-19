@@ -1,0 +1,106 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1100,
+  "height": 520,
+  "background": "transparent",
+
+  "projection": {
+    "type": "mercator",
+    "center": [102.0, 4.0],
+    "scale": 4200,
+    "translate": [550, 280]
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "data/malaysia_states.geojson",
+        "format": {
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#64748b",
+        "stroke": "#cbd5e1",
+        "opacity": 1,
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/railways.geojson",
+        "format": {
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.geometry.type == 'LineString' || datum.geometry.type == 'MultiLineString'"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "filled": false,
+        "stroke": "#38bdf8",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "Railway Line"
+          },
+          {
+            "field": "properties.railway",
+            "type": "nominal",
+            "title": "Type"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/railways.geojson",
+        "format": {
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.geometry.type == 'Point'"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 45,
+        "color": "#f97316",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "geometry.coordinates[0]",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "geometry.coordinates[1]",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "Station"
+          },
+          {
+            "field": "properties.railway",
+            "type": "nominal",
+            "title": "Type"
+          }
+        ]
+      }
+    }
+  ]
+}

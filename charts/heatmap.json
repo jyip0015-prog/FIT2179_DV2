@@ -1,0 +1,96 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 430,
+  "height": 330,
+  "background": "transparent",
+
+  "data": {
+    "url": "data/ridership_headline.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "toDate(datum.date)",
+      "as": "parsed_date"
+    },
+
+    {
+      "calculate": "month(datum.parsed_date)",
+      "as": "month"
+    },
+
+    {
+      "calculate": "year(datum.parsed_date)",
+      "as": "year"
+    },
+
+    {
+      "calculate": "toNumber(replace(datum.rail_mrt_kajang || '0', ',', ''))",
+      "as": "ridership"
+    }
+  ],
+
+  "mark": "rect",
+
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "ordinal",
+      "title": "Month"
+    },
+
+    "y": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+
+    "color": {
+      "field": "ridership",
+      "type": "quantitative",
+      "title": "Ridership",
+      "scale": {
+        "scheme": "blues"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "month",
+        "type": "ordinal",
+        "title": "Month"
+      },
+      {
+        "field": "ridership",
+        "type": "quantitative",
+        "title": "Ridership",
+        "format": ","
+      }
+    ]
+  },
+
+  "config": {
+    "axis": {
+      "labelColor": "#cbd5e1",
+      "titleColor": "#e2e8f0",
+      "grid": false,
+      "domainColor": "#64748b",
+      "tickColor": "#64748b"
+    },
+
+    "legend": {
+      "labelColor": "#cbd5e1",
+      "titleColor": "#e2e8f0"
+    },
+
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}
