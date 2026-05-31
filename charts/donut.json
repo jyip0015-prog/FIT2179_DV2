@@ -1,77 +1,97 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
+  "width": 360,
+  "height": 320,
   "background": "transparent",
 
-  "width": 320,
-  "height": 320,
-
   "data": {
-    "values": [
-      {"mode": "Rail", "value": 42},
-      {"mode": "Bus", "value": 58}
-    ]
+    "url": "data/ridership_headline.csv"
   },
+
+  "transform": [
+    {
+      "calculate": "toNumber(replace(datum.bus_rkl + '', /,/g, '')) + toNumber(replace(datum.bus_rkn + '', /,/g, '')) + toNumber(replace(datum.bus_rpn + '', /,/g, ''))",
+      "as": "Bus"
+    },
+    {
+      "calculate": "toNumber(replace(datum.rail_lrt_ampang + '', /,/g, '')) + toNumber(replace(datum.rail_lrt_kj + '', /,/g, '')) + toNumber(replace(datum.rail_monorail + '', /,/g, '')) + toNumber(replace(datum.rail_mrt_kajang + '', /,/g, ''))",
+      "as": "Rail"
+    },
+    {
+      "fold": ["Bus", "Rail"],
+      "as": ["Mode", "Ridership"]
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "Ridership",
+          "as": "TotalRidership"
+        }
+      ],
+      "groupby": ["Mode"]
+    },
+    {
+      "calculate": "datum.Mode == 'Bus' ? 'Bus' : 'Rail'",
+      "as": "TransportMode"
+    }
+  ],
 
   "mark": {
     "type": "arc",
     "innerRadius": 90,
     "outerRadius": 140,
-    "cornerRadius": 8
+    "cornerRadius": 6,
+    "stroke": "#ffffff",
+    "strokeWidth": 2
   },
 
   "encoding": {
     "theta": {
-      "field": "value",
+      "field": "TotalRidership",
       "type": "quantitative"
     },
-
     "color": {
-      "field": "mode",
+      "field": "TransportMode",
       "type": "nominal",
+      "title": "Mode",
       "scale": {
-        "range": ["#f97316", "#38bdf8"]
+        "domain": ["Bus", "Rail"],
+        "range": ["#2563eb", "#f97316"]
       },
       "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
         "title": "Transport Mode",
-        "labelColor": "white",
-        "titleColor": "white",
-        "orient": "bottom"
+        "labelColor": "#334155",
+        "titleColor": "#111827",
+        "labelFontSize": 12,
+        "titleFontSize": 13,
+        "symbolSize": 140
       }
     },
-
     "tooltip": [
       {
-        "field": "mode",
+        "field": "TransportMode",
         "type": "nominal",
         "title": "Mode"
       },
       {
-        "field": "value",
+        "field": "TotalRidership",
         "type": "quantitative",
-        "title": "Share (%)"
+        "title": "Total Ridership",
+        "format": ","
       }
     ]
   },
 
-  "view": {
-    "stroke": null
-  },
-
   "config": {
-  "axis": {
-    "labelColor": "#334155",
-    "titleColor": "#111827",
-    "gridColor": "#e2e8f0",
-    "domainColor": "#94a3b8",
-    "tickColor": "#94a3b8"
-  },
-  "legend": {
-    "labelColor": "#334155",
-    "titleColor": "#111827"
-  },
-  "view": {
-    "stroke": "transparent"
+    "legend": {
+      "labelColor": "#334155",
+      "titleColor": "#111827"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
   }
-}
 }

@@ -49,13 +49,20 @@
             Malaysia’s rail network is unevenly distributed, with stronger access along major urban and west coast corridors.
         </p>
 
-        <div class="chart-card">
-            <h3>Malaysia Railway Network Map</h3>
-            <p class="annotation">
-                This map shows where rail infrastructure is located, with stations mainly concentrated along Peninsular Malaysia’s west coast corridor.
-            </p>
-            <div id="rail-map" class="large-chart"></div>
-        </div>
+        <div class="chart-card map-card">
+    <h3>Malaysia Railway Network Map</h3>
+    <p class="annotation">
+        This map shows where rail infrastructure is located, with stations mainly concentrated along Peninsular Malaysia’s west coast corridor.
+    </p>
+
+    <div class="map-legend">
+        <span><i class="legend-line"></i> Railway line</span>
+        <span><i class="legend-dot"></i> Station</span>
+    </div>
+
+    <div id="rail-map" class="large-chart"></div>
+</div>
+
     </section>
 
     <section class="section" id="trends">
@@ -110,9 +117,9 @@
         <div class="two-column">
             <div class="chart-card">
                 <h3>Bus and Rail Mode Share</h3>
-                <p class="annotation">
-                    This donut chart summarises the overall mode share, showing that rail contributes more total ridership than bus across the selected period.
-                </p>
+            <p class="annotation">
+                Rail contributes the larger overall share, while bus remains an important supporting mode in daily mobility.
+            </p>
                 <div id="donut-chart"></div>
             </div>
 

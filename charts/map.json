@@ -1,14 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1100,
+  "width": 980,
   "height": 520,
-  "background": "transparent",
+  "background": "#f8fafc",
 
   "projection": {
     "type": "mercator",
-    "center": [102.0, 4.0],
-    "scale": 4200,
-    "translate": [550, 280]
+    "center": [102.1, 4.1],
+    "scale": 4300,
+    "translate": [490, 270]
   },
 
   "layer": [
@@ -21,10 +21,10 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#64748b",
-        "stroke": "#cbd5e1",
-        "opacity": 1,
-        "strokeWidth": 1
+        "fill": "#dbeafe",
+        "stroke": "#0f172a",
+        "strokeWidth": 1.1,
+        "opacity": 0.95
       }
     },
     {
@@ -42,8 +42,9 @@
       "mark": {
         "type": "geoshape",
         "filled": false,
-        "stroke": "#38bdf8",
-        "strokeWidth": 1.5
+        "stroke": "#2563eb",
+        "strokeWidth": 2.5,
+        "opacity": 0.95
       },
       "encoding": {
         "tooltip": [
@@ -51,11 +52,6 @@
             "field": "properties.name",
             "type": "nominal",
             "title": "Railway Line"
-          },
-          {
-            "field": "properties.railway",
-            "type": "nominal",
-            "title": "Type"
           }
         ]
       }
@@ -74,10 +70,11 @@
       ],
       "mark": {
         "type": "circle",
-        "size": 45,
+        "size": 62,
         "color": "#f97316",
-        "stroke": "white",
-        "strokeWidth": 1
+        "stroke": "#ffffff",
+        "strokeWidth": 1.6,
+        "opacity": 0.95
       },
       "encoding": {
         "longitude": {
@@ -102,5 +99,11 @@
         ]
       }
     }
-  ]
+  ],
+
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+  }
 }
