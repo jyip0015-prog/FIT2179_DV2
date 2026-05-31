@@ -46,36 +46,35 @@
         <p class="section-kicker">01 · NETWORK</p>
         <h2>National Rail Corridor Context</h2>
         <p class="section-text">
-            This map provides spatial context for Malaysia’s major railway corridor, showing how long-distance rail infrastructure is concentrated across Peninsular Malaysia.
+            Before comparing MRT, LRT, Monorail and bus ridership, this map provides geographic context for Malaysia’s major rail corridor and station distribution.
         </p>
 
         <div class="chart-card map-card">
-    <h3>Major Railway Corridor Map</h3>
-        <p class="annotation">
-            The map focuses on major railway lines and stations, providing geographic context before comparing urban rail ridership trends.
-        </p>
+            <h3>Major Railway Corridor Map</h3>
+            <p class="annotation">
+                Major rail corridors are concentrated across Peninsular Malaysia, giving context to the urban rail ridership patterns analysed later.
+            </p>
 
-    <div class="map-legend">
-        <span><i class="legend-line"></i> Railway line</span>
-        <span><i class="legend-dot"></i> Station</span>
-    </div>
+            <div class="map-legend">
+                <span><i class="legend-line"></i> Railway line</span>
+                <span><i class="legend-dot"></i> Station</span>
+            </div>
 
-    <div id="rail-map" class="large-chart"></div>
-</div>
-
+            <div id="rail-map" class="large-chart"></div>
+        </div>
     </section>
 
     <section class="section" id="trends">
         <p class="section-kicker">02 · RECOVERY</p>
         <h2>Ridership Recovery and Growth</h2>
         <p class="section-text">
-            Ridership fell sharply during the pandemic period, but most services show a gradual recovery after 2022.
+            The ridership data shows a clear recovery story: demand fell heavily during disruption periods, then rebuilt as daily mobility returned after 2022.
         </p>
 
         <div class="chart-card">
             <h3>Daily Ridership Trend by Rail Service</h3>
             <p class="annotation">
-                The line chart shows daily rail ridership over time, highlighting the sharp fall during disruption periods and the gradual recovery after 2022.
+                LRT Kelana Jaya and MRT Kajang recover strongly after 2022, while Monorail remains comparatively smaller throughout the period.
             </p>
             <div id="ridership-line" class="large-chart"></div>
         </div>
@@ -84,7 +83,7 @@
             <div class="chart-card">
                 <h3>Bus and Rail Ridership Composition</h3>
                 <p class="annotation">
-                    This proportional bar chart compares bus and rail shares by year, showing that rail consistently contributes the larger share of ridership.
+                    Rail consistently contributes the larger share of public transport ridership, showing its central role in Malaysia’s mobility recovery.
                 </p>
                 <div id="stacked-area"></div>
             </div>
@@ -92,7 +91,7 @@
             <div class="chart-card">
                 <h3>Rail Service Ridership Distribution</h3>
                 <p class="annotation">
-                    The box plot summarises ridership spread by service, showing that LRT KJ and MRT Kajang have higher typical ridership than Monorail.
+                    LRT KJ and MRT Kajang show higher typical ridership and wider spread, while Monorail stays lower and more compact.
                 </p>
                 <div id="small-multiples-chart"></div>
             </div>
@@ -109,7 +108,7 @@
         <div class="chart-card">
             <h3>MRT Kajang Ridership Heatmap</h3>
             <p class="annotation">
-                The heatmap compares monthly MRT Kajang ridership across years, with darker months after 2023 showing stronger recovery in demand.
+                Darker months after 2023 indicate stronger MRT Kajang ridership, suggesting a sustained recovery in urban rail usage.
             </p>
             <div id="heatmap-chart" class="large-chart"></div>
         </div>
@@ -117,16 +116,16 @@
         <div class="two-column">
             <div class="chart-card">
                 <h3>Bus and Rail Mode Share</h3>
-            <p class="annotation">
-                Rail contributes the larger overall share, while bus remains an important supporting mode in daily mobility.
-            </p>
+                <p class="annotation">
+                    Rail contributes the larger overall share, while bus remains an important supporting mode in daily mobility.
+                </p>
                 <div id="donut-chart"></div>
             </div>
 
             <div class="chart-card">
                 <h3>Average Rail Service Ranking</h3>
                 <p class="annotation">
-                    The ranking chart compares average rail ridership by service, showing LRT Kelana Jaya as the busiest and Monorail as the lowest.
+                    LRT Kelana Jaya records the highest average daily ridership, while Monorail remains the lowest among the compared rail services.
                 </p>
                 <div id="ranking-chart"></div>
             </div>
@@ -143,7 +142,7 @@
         <div class="chart-card">
             <h3>Interactive Transport Mode Explorer</h3>
             <p class="annotation">
-                This interactive chart lets users select one service and observe how its ridership changed before, during, and after the recovery period.
+                Selecting a service reveals its individual recovery pattern, making differences between MRT, LRT, Monorail, KTM and bus clearer.
             </p>
             <div id="interactive-chart" class="large-chart"></div>
         </div>
@@ -152,7 +151,7 @@
             <div class="chart-card">
                 <h3>Bus and Rail Ridership Relationship</h3>
                 <p class="annotation">
-                    The scatter plot compares daily bus and rail demand after 2022, showing that higher bus ridership usually appears with higher rail ridership.
+                    Daily bus and rail demand generally move together after 2022, suggesting that public transport recovery happened across both modes.
                 </p>
                 <div id="scatter-chart"></div>
             </div>
@@ -160,7 +159,7 @@
             <div class="chart-card">
                 <h3>Yearly Bus and Rail Gap</h3>
                 <p class="annotation">
-                    The connected dot plot compares yearly bus and rail averages, showing that the gap widened after 2023 and then became more stable.
+                    The connected dot plot shows the bus–rail ridership gap widening after 2023 before becoming more stable around 2025.
                 </p>
                 <div id="connected-dot-chart"></div>
             </div>
@@ -172,12 +171,12 @@
             <div class="insight-icon">💡</div>
 
             <div>
-                <h2>Key Insight</h2>
+                <h2>Recovery Driven by Rail</h2>
                 <p>
                     Malaysia’s public transport data shows a clear recovery story after major disruption periods.
-                    Rail services dominate overall ridership, while bus services still play an important supporting role
-                    in the wider mobility system. The main challenge is not only recovery, but also building a more balanced
-                    and accessible transport network across different regions.
+                    Rail services carry the larger share of ridership, especially through high-demand urban services such as LRT Kelana Jaya and MRT Kajang.
+                    Bus services remain important as a supporting mode, but the visualisations suggest that rail is the main driver of Malaysia’s public transport recovery.
+                    The next challenge is not only increasing ridership, but also improving accessibility and coverage across different regions.
                 </p>
             </div>
         </div>
