@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 360,
+  "height": 300,
+  "background": "transparent",
+
+  "data": {
+    "url": "data/ridership_headline.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "year(toDate(datum.date))",
+      "as": "Year"
+    },
+    {
+      "filter": "datum.Year >= 2022"
+    },
+    {
+      "calculate": "toNumber(replace(datum.bus_rkl + '', /,/g, '')) + toNumber(replace(datum.bus_rkn + '', /,/g, '')) + toNumber(replace(datum.bus_rpn + '', /,/g, ''))",
+      "as": "Bus"
+    },
+    {
+      "calculate": "toNumber(replace(datum.rail_lrt_ampang + '', /,/g, '')) + toNumber(replace(datum.rail_lrt_kj + '', /,/g, '')) + toNumber(replace(datum.rail_monorail + '', /,/g, '')) + toNumber(replace(datum.rail_mrt_kajang + '', /,/g, ''))",
+      "as": "Rail"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "mean",
+          "field": "Bus",
+          "as": "AverageBus"
+        },
+        {
+          "op": "mean",
+          "field": "Rail",
+          "as": "AverageRail"
+        }
+      ],
+      "groupby": ["Year"]
+    },
+    {
+      "fold": ["AverageBus", "AverageRail"],
+      "as": ["Mode", "AverageRidership"]
+    },
+    {
+      "calculate": "datum.Mode == 'AverageBus' ? 'Bus' : 'Rail'",
+      "as": "TransportMode"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "#9ca3af",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "x": {
+          "field": "AverageRidership",
+          "type": "quantitative",
+          "title": "Average Daily Ridership"
+        },
+        "detail": {
+          "field": "Year"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 120,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "y": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "x": {
+          "field": "AverageRidership",
+          "type": "quantitative",
+          "title": "Average Daily Ridership"
+        },
+        "color": {
+          "field": "TransportMode",
+          "type": "nominal",
+          "title": "Mode",
+          "scale": {
+            "domain": ["Bus", "Rail"],
+            "range": ["#2563eb", "#f97316"]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "TransportMode",
+            "type": "nominal",
+            "title": "Mode"
+          },
+          {
+            "field": "AverageRidership",
+            "type": "quantitative",
+            "title": "Average Daily Ridership",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "axis": {
+      "labelColor": "#374151",
+      "titleColor": "#111827",
+      "gridColor": "#e5e7eb",
+      "domainColor": "#9ca3af",
+      "tickColor": "#9ca3af"
+    },
+    "legend": {
+      "labelColor": "#374151",
+      "titleColor": "#111827"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

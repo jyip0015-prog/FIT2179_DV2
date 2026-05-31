@@ -6,11 +6,12 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     font-family: 'Inter', Arial, sans-serif;
-    background-color: #f7f3ec;
+    background-color: #f6f1e9;
     color: #111827;
     line-height: 1.6;
     overflow-x: hidden;
@@ -21,19 +22,18 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1rem 8%;
-    background-color: rgba(247, 243, 236, 0.9);
+    padding: 0.9rem 8%;
+    background-color: rgba(246, 241, 233, 0.92);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    border-bottom: 1px solid #ddd6cc;
+    border-bottom: 1px solid #ded6ca;
 }
 
 .nav-title {
     font-weight: 700;
-    letter-spacing: 0.5px;
     color: #111827;
 }
 
@@ -50,45 +50,70 @@ body {
 
 /* HERO */
 .hero {
-    min-height: 92vh;
+    min-height: 88vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: left;
     padding: 7rem 2rem 4rem;
+    background:
+        linear-gradient(90deg, rgba(246, 241, 233, 0.96) 0%, rgba(246, 241, 233, 0.82) 55%, rgba(246, 241, 233, 0.45) 100%),
+        url("../data/hero-train.jpg");
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #ded6ca;
 }
 
 .hero-content {
-    max-width: 1150px;
+    max-width: 1120px;
     width: 100%;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c2410c;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 .hero-content h1 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-size: clamp(3.2rem, 7vw, 6.2rem);
     line-height: 0.95;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
     color: #111827;
+    max-width: 900px;
 }
 
 .subtitle {
-    font-size: 1.25rem;
-    color: #4b5563;
-    max-width: 760px;
+    font-size: 1.12rem;
+    color: #374151;
+    max-width: 720px;
+    line-height: 1.75;
+}
+
+
+.hero {
+    border-bottom: 1px solid #ded6ca;
 }
 
 /* SECTIONS */
 .section {
-    max-width: 1150px;
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 5rem 2rem;
+    padding: 4.2rem 2rem;
 }
 
 .section h2 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
     line-height: 1.1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
     color: #111827;
 }
 
@@ -102,36 +127,59 @@ body {
 /* CHART CARDS */
 .chart-card {
     background: #ffffff;
-    border: 1px solid #ddd6cc;
-    border-radius: 8px;
-    padding: 1.5rem;
+    border: 1px solid #d9d0c3;
+    border-radius: 10px;
+    padding: 1.6rem;
     margin-bottom: 2rem;
     overflow: hidden;
+    min-width: 0;
 }
 
 .chart-card h3 {
     font-size: 1.05rem;
     color: #111827;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.45rem;
     font-weight: 700;
 }
 
 .annotation {
-    font-size: 0.85rem;
-    color: #6b7280;
+    font-size: 0.9rem;
+    color: #5f6b7a;
     margin-bottom: 1rem;
-    max-width: 680px;
+    max-width: 720px;
+}
+
+/* VEGA FIX */
+.vega-embed {
+    width: 100%;
+    max-width: 100%;
+}
+
+.vega-embed canvas,
+.vega-embed svg {
+    max-width: 100%;
+    height: auto;
 }
 
 /* CHART SIZES */
 .large-chart {
-    min-height: 520px;
+    min-height: 470px;
     width: 100%;
 }
 
 #rail-map,
 #ridership-line,
-#heatmap-chart {
+#heatmap-chart,
+#interactive-chart {
+    width: 100%;
+}
+
+#donut-chart,
+#ranking-chart,
+#scatter-chart,
+#connected-dot-chart,
+#small-multiples-chart,
+#stacked-area {
     width: 100%;
 }
 
@@ -140,7 +188,7 @@ body {
     background: #f1ede5;
     border: 1px dashed #c8bfb3;
     border-radius: 6px;
-    min-height: 320px;
+    min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,24 +197,24 @@ body {
     text-align: center;
 }
 
-.chart-card .chart-placeholder {
-    margin-bottom: 0;
-}
-
-/* TWO COLUMN LAYOUT */
+/* TWO COLUMN */
 .two-column {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 2rem;
-    align-items: start;
+    align-items: stretch;
 }
 
-/* METADATA FOOTER */
+.two-column .chart-card {
+    height: 100%;
+}
+
+/* METADATA */
 .metadata {
-    max-width: 1150px;
+    max-width: 1120px;
     margin: 0 auto;
     padding: 3rem 2rem;
-    border-top: 1px solid #ddd6cc;
+    border-top: 1px solid #d9d0c3;
     color: #4b5563;
     font-size: 0.9rem;
 }
@@ -182,10 +230,11 @@ body {
     }
 
     .section {
-        padding: 4rem 1.25rem;
+        padding: 3.5rem 1.25rem;
     }
 
     .hero {
-        padding: 7rem 1.25rem 3rem;
+        min-height: 68vh;
+        padding: 6rem 1.25rem 2rem;
     }
 }

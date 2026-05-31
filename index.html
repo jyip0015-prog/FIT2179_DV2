@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap"
+        rel="stylesheet">
 
     <title>How Malaysia Moves</title>
 
@@ -29,23 +31,39 @@
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-content">
+<section class="hero">
+    <div class="hero-content">
+
+        <div class="hero-text">
+            <p class="eyebrow">A DATA STORY · MALAYSIA · 2019–2026</p>
+
             <h1>How Malaysia Moves</h1>
+
             <p class="subtitle">
-                Exploring Malaysia’s public transport trends through ridership patterns and railway networks.
+                From railway networks to daily ridership, this visualisation explores how Malaysia’s public transport system recovered, shifted, and continues to shape everyday mobility.
             </p>
         </div>
-    </section>
+
+        <div class="hero-visual">
+            <div class="hero-visual-overlay">
+                <p>Public transport demand changed sharply after 2020, but ridership has gradually returned across major services.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
 
     <section class="section" id="map">
         <h2>1. Malaysia Railway Network</h2>
         <p class="section-text">
-            A geographic view of Malaysia’s railway network and how rail infrastructure is distributed across the country.
+            Malaysia’s railway network provides the spatial foundation for understanding where public transport access is strongest and where it remains more limited.
         </p>
 
         <div class="chart-card">
             <h3>Malaysia Railway Network Map</h3>
+            <p class="annotation">
+                Rail infrastructure is mainly concentrated along the west coast corridor.
+            </p>
             <div id="rail-map" class="large-chart"></div>
         </div>
     </section>
@@ -53,22 +71,32 @@
     <section class="section" id="trends">
         <h2>2. Ridership Recovery and Growth</h2>
         <p class="section-text">
-            This section shows how public transport ridership changed over time, especially before and after major disruptions.
+            Ridership patterns show how public transport demand changed over time, especially around major disruption periods and the later recovery phase.
         </p>
 
         <div class="chart-card">
             <h3>Daily Ridership Trend by Rail Service</h3>
+            <p class="annotation">
+                Rail demand dropped sharply during disruption periods before gradually recovering.
+            </p>
             <div id="ridership-line" class="large-chart"></div>
         </div>
 
         <div class="two-column">
             <div class="chart-card">
-                <h3>Bus and Rail Ridership Volume</h3>
+                <h3>Bus and Rail Ridership Composition</h3>
+                <p class="annotation">
+                    The proportional bar chart compares bus and rail shares across years.
+                </p>
                 <div id="stacked-area"></div>
             </div>
 
             <div class="chart-card">
-                <h3>Rail Service Trends</h3>
+                <h3>Rail Service Ridership Distribution</h3>
+
+                <p class="annotation">
+                    Box plots summarise the typical ridership and variability of each rail service.
+                </p>
                 <div id="small-multiples-chart"></div>
             </div>
         </div>
@@ -77,22 +105,31 @@
     <section class="section" id="patterns">
         <h2>3. Daily and Monthly Travel Patterns</h2>
         <p class="section-text">
-            Ridership is not the same every day. Heatmaps and monthly views can reveal weekday, weekend, and seasonal travel patterns.
+            Public transport demand is not constant. Monthly and service-level patterns reveal how commuting behaviour changes across time.
         </p>
 
         <div class="chart-card">
             <h3>MRT Kajang Ridership Heatmap</h3>
+            <p class="annotation">
+                The heatmap highlights stronger and weaker ridership periods across years.
+            </p>
             <div id="heatmap-chart" class="large-chart"></div>
         </div>
 
         <div class="two-column">
             <div class="chart-card">
                 <h3>Bus and Rail Mode Share</h3>
+                <p class="annotation">
+                    Mode share summarises the relative contribution of bus and rail services.
+                </p>
                 <div id="donut-chart"></div>
             </div>
 
             <div class="chart-card">
                 <h3>Average Rail Service Ranking</h3>
+                <p class="annotation">
+                    Ranking shows which rail services carry higher average daily ridership.
+                </p>
                 <div id="ranking-chart"></div>
             </div>
         </div>
@@ -101,23 +138,33 @@
     <section class="section" id="explore">
         <h2>4. Interactive Exploration</h2>
         <p class="section-text">
-            Users can explore different transport modes and compare how each service contributes to Malaysia’s mobility story.
+            The final section allows users to compare transport services more directly and explore relationships between different mobility patterns.
         </p>
 
         <div class="chart-card">
             <h3>Interactive Transport Mode Explorer</h3>
-            <div class="chart-placeholder large-chart">INTERACTIVE FILTERED CHART</div>
+            <p class="annotation">
+                Users can filter transport modes to focus on specific mobility patterns.
+            </p>
+            <div id="interactive-chart" class="large-chart"></div>
         </div>
 
         <div class="two-column">
             <div class="chart-card">
-                <h3>Bus and Rail Relationship</h3>
-                <div class="chart-placeholder">SCATTER PLOT</div>
+                <h3>Bus and Rail Ridership Relationship</h3>
+
+            <p class="annotation">
+                Each point represents one day after 2022, comparing bus and rail demand.
+            </p>
+                <div id="scatter-chart"></div>
             </div>
 
             <div class="chart-card">
-                <h3>Monthly Ridership Comparison</h3>
-                <div class="chart-placeholder">MONTHLY COMPARISON CHART</div>
+               <h3>Yearly Bus and Rail Gap</h3>
+            <p class="annotation">
+                Connected dots show how the bus and rail ridership gap changes by year.
+            </p>
+            <div id="connected-dot-chart"></div>
             </div>
         </div>
     </section>
@@ -125,9 +172,17 @@
     <section class="section">
         <h2>Conclusion</h2>
         <p class="section-text">
-            Malaysia’s public transport data shows how mobility is shaped by rail infrastructure, urban demand, and changing travel behaviour.
+            Malaysia’s public transport data shows how mobility is shaped by rail infrastructure, urban demand, and changing travel behaviour. The visualisation highlights both the recovery of ridership and the uneven spatial distribution of rail access.
         </p>
     </section>
+
+    <footer class="metadata">
+        <p><strong>Author:</strong> Wing Him Joshua Yip</p>
+        <p><strong>Created:</strong> May 2026</p>
+        <p><strong>Data Sources:</strong> data.gov.my public transport ridership data, HDX OpenStreetMap railway data, and Malaysia administrative boundary GeoJSON.</p>
+        <p><strong>Visualisation:</strong> FIT2179 Data Visualisation 2</p>
+        <p><strong>AI Acknowledgement:</strong> Generative AI was used to assist with wording, layout planning, and code refinement.</p>
+    </footer>
 
     <script src="js/main.js"></script>
 

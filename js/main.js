@@ -31,3 +31,15 @@ vegaEmbed("#donut-chart", "charts/donut.json", {
 vegaEmbed("#ranking-chart", "charts/ranking.json", {
   actions: false
 });
+
+vegaEmbed("#interactive-chart", "charts/interactive.json", {
+    actions: false
+});
+
+vegaEmbed("#scatter-chart", "charts/scatter.json", {
+    actions: false
+});
+
+vegaEmbed("#connected-dot-chart", "charts/connected_dot.json", {
+    actions: false
+});

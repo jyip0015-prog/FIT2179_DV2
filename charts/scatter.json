@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 360,
+  "height": 300,
+  "background": "transparent",
+
+  "data": {
+    "url": "data/ridership_headline.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "year(toDate(datum.date))",
+      "as": "Year"
+    },
+    {
+      "calculate": "toNumber(replace(datum.bus_rkl + '', /,/g, '')) + toNumber(replace(datum.bus_rkn + '', /,/g, '')) + toNumber(replace(datum.bus_rpn + '', /,/g, ''))",
+      "as": "BusTotal"
+    },
+    {
+      "calculate": "toNumber(replace(datum.rail_lrt_ampang + '', /,/g, '')) + toNumber(replace(datum.rail_lrt_kj + '', /,/g, '')) + toNumber(replace(datum.rail_monorail + '', /,/g, '')) + toNumber(replace(datum.rail_mrt_kajang + '', /,/g, ''))",
+      "as": "RailTotal"
+    },
+    {
+      "filter": "datum.BusTotal > 0 && datum.Year >= 2022"
+    }
+  ],
+
+  "mark": {
+    "type": "circle",
+    "opacity": 0.55,
+    "size": 40
+  },
+
+  "encoding": {
+    "x": {
+      "field": "BusTotal",
+      "type": "quantitative",
+      "title": "Total Bus Ridership",
+      "scale": {
+        "domain": [80000, 350000]
+      }
+    },
+    "y": {
+      "field": "RailTotal",
+      "type": "quantitative",
+      "title": "Total Rail Ridership"
+    },
+    "color": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "scale": {
+        "scheme": "viridis"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "BusTotal",
+        "type": "quantitative",
+        "title": "Bus Ridership",
+        "format": ","
+      },
+      {
+        "field": "RailTotal",
+        "type": "quantitative",
+        "title": "Rail Ridership",
+        "format": ","
+      }
+    ]
+  },
+
+  "config": {
+    "axis": {
+      "labelColor": "#374151",
+      "titleColor": "#111827",
+      "gridColor": "#e5e7eb",
+      "domainColor": "#9ca3af",
+      "tickColor": "#9ca3af"
+    },
+    "legend": {
+      "labelColor": "#374151",
+      "titleColor": "#111827"
+    },
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

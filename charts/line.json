@@ -49,19 +49,19 @@
   },
 
   "config": {
-    "axis": {
-      "labelColor": "#cbd5e1",
-      "titleColor": "#e2e8f0",
-      "gridColor": "#334155",
-      "domainColor": "#64748b",
-      "tickColor": "#64748b"
-    },
-    "legend": {
-      "labelColor": "#cbd5e1",
-      "titleColor": "#e2e8f0"
-    },
-    "view": {
-      "stroke": "transparent"
-    }
+  "axis": {
+    "labelColor": "#374151",
+    "titleColor": "#111827",
+    "gridColor": "#e5e7eb",
+    "domainColor": "#9ca3af",
+    "tickColor": "#9ca3af"
+  },
+  "legend": {
+    "labelColor": "#374151",
+    "titleColor": "#111827"
+  },
+  "view": {
+    "stroke": "transparent"
   }
+}
 }

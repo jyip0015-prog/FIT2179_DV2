@@ -1,5 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 430,
+  "height": 320,
   "background": "transparent",
 
   "data": {
@@ -15,57 +17,64 @@
         "rail_mrt_kajang"
       ],
       "as": ["Service", "Ridership"]
+    },
+    {
+      "calculate": "toNumber(replace(datum.Ridership + '', /,/g, ''))",
+      "as": "RidershipNumber"
     }
   ],
 
   "mark": {
-    "type": "line",
-    "strokeWidth": 2,
-    "color": "#38bdf8"
+    "type": "boxplot",
+    "extent": "min-max",
+    "size": 35
   },
 
-  "width": 220,
-  "height": 120,
-
   "encoding": {
-    "x": {
-      "field": "date",
-      "type": "temporal",
-      "title": null
-    },
     "y": {
-      "field": "Ridership",
-      "type": "quantitative",
-      "title": null
-    },
-    "column": {
       "field": "Service",
       "type": "nominal",
-      "columns": 2,
-      "title": null
+      "title": null,
+      "sort": "-x"
+    },
+    "x": {
+      "field": "RidershipNumber",
+      "type": "quantitative",
+      "title": "Daily Ridership"
+    },
+    "color": {
+      "field": "Service",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "range": ["#2563eb", "#f97316", "#64748b", "#0ea5e9"]
+      }
     },
     "tooltip": [
-      {"field": "Service", "type": "nominal"},
-      {"field": "date", "type": "temporal"},
-      {"field": "Ridership", "type": "quantitative", "format": ","}
+      {
+        "field": "Service",
+        "type": "nominal",
+        "title": "Service"
+      },
+      {
+        "field": "RidershipNumber",
+        "type": "quantitative",
+        "title": "Daily Ridership",
+        "format": ","
+      }
     ]
   },
 
   "config": {
     "axis": {
-      "labelColor": "#cbd5e1",
-      "titleColor": "#e2e8f0",
-      "gridColor": "#334155",
-      "domainColor": "#64748b",
-      "tickColor": "#64748b"
-    },
-    "header": {
-      "labelColor": "#e2e8f0",
-      "labelFontSize": 14,
-      "title": null
+      "labelColor": "#374151",
+      "titleColor": "#111827",
+      "gridColor": "#e5e7eb",
+      "domainColor": "#9ca3af",
+      "tickColor": "#9ca3af"
     },
     "view": {
-      "stroke": "#334155"
+      "stroke": "transparent"
     }
   }
 }
